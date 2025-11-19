@@ -43,7 +43,8 @@ class SessionsController {
         const { secret, expiresIn } = authconfig.jwt
 
 
-        const token = sign({ role: user.role ?? "customer"}, secret,{
+        const token =( sign as unknown as any)
+        ({ role: user.role ?? "customer"} , secret,{
             subject: user.id,
             expiresIn,
         })
